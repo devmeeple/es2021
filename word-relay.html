@@ -10,20 +10,31 @@
     <input type="text">
     <button>입력</button>
 <script>
-    const number = parseInt(prompt(`몇 명이 참가하나요?`), 10);
-    alert(number);
-    const yesOrNo = confirm(`맞나요?`);
+    const number = Number(prompt(`몇 명이 참가하나요?`));
+    const $button = document.querySelector(`button`);
+    const $input = document.querySelector(`input`);
+    const $word = document.querySelector(`#word`);
+    let word; // 제시어
+    let newWord; // 새로 입력한 단어
 
-    document.querySelector(`input`).addEventListener(`input`, (event) => {
-        console.log(`글자 입력`, event.target.value);
-    });
 
-    const onClick = function () {
-        console.log(`버튼 클릭`);
-        return undefined;
-    }
+    const onClickButton = () => {
+        if (!word) { // 제시어가 비어있는가?
+            // 비어있음
+            word = newWord; // 입력한 단어가 제시어
+            $word.textContent = word;
+            $input.value = ``;
+        }
 
-    document.querySelector(`button`).addEventListener(`click`, onClick);
+
+    };
+
+    const onInput = () => {
+        newWord = event.target.value;
+    };
+
+    $button.addEventListener(`click`, onClickButton);
+    $input.addEventListener(`input`, onInput);
 </script>
 </body>
 </html>
