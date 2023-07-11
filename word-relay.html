@@ -14,7 +14,16 @@
     alert(number);
     const yesOrNo = confirm(`맞나요?`);
 
-    document.querySelectorAll(`.target`);
+    document.querySelector(`input`).addEventListener(`input`, (event) => {
+        console.log(`글자 입력`, event.target.value);
+    });
+
+    const onClick = function () {
+        console.log(`버튼 클릭`);
+        return undefined;
+    }
+
+    document.querySelector(`button`).addEventListener(`click`, onClick);
 </script>
 </body>
 </html>
